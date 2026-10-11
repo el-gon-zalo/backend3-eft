@@ -1,0 +1,19 @@
+server:
+  port: 8083
+  ssl:
+    enabled: true
+    key-store: ${SSL_KEYSTORE:classpath:keystore.p12}
+    key-store-password: ${SSL_KEYSTORE_PASSWORD:changeit}
+    key-store-type: PKCS12
+    key-alias: bff-local
+
+core-streaming:
+  base-url: ${CORE_STREAMING_BASE_URL:http://backend:8080}
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_SERVER_URL:http://auth-server:9000}
+          jwk-set-uri: ${AUTH_SERVER_URL:http://auth-server:9000}/oauth2/jwks
